@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>index.html</title>
 </head>
-
 <body>
     <script>
         window.location.href = "login.php";

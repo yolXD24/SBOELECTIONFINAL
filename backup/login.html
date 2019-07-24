@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="yol torres">
+
+    <title>Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background: url('logo.png');
+            background-repeat: no-repeat;
+            background-size: 15%;
+            background-position: bottom 3% right 5%;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body class="loginBody">
+
+    <div class="container">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header log" id="log">
+                Login To Vote
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <label for="inputEmail">Email </label>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email " required="required" autofocus="autofocus">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <label for="classNum">Class Number </label>
+                        <input type="number" id="classNum" class="form-control" placeholder="Class Number" required="required" autofocus="autofocus">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                    </div>
+                </div>
+                <br>
+                <input type="button" value="login" id="loginbtn" class="btn btn-success btn-block">
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(document).keypress(function(event) {
+
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    alert('Use the Log in Button!');
+                }
+
+            })
+            $("#loginbtn").click(
+                function() {
+                    var email = $('#inputEmail').val();
+                    var cn = $('#classNum').val();
+                    var pw = $('#inputPassword').val();
+
+                    $.ajax({
+                        url: "log.php",
+                        type: 'POST',
+                        data: {
+                            email: email,
+                            cn: cn,
+                            pw: pw
+                        },
+                        success: function(response) {
+                            if (response.indexOf('True') > -1) {
+                                alert("You already Voted!");
+                            } else if (response == 0) {
+                                alert("Please double check your credentials!");
+                            } else {
+                                window.location.href = "voting.php";
+                            }
+                        }
+                    })
+                });
+        });
+    </script>
+
+</body>
+
+</html>

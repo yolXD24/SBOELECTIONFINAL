@@ -1,12 +1,12 @@
 <?php
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'pnpassword');
-define('DB_NAME', 'ElectionSystem');
+define('DB_SERVER', 'remotemysql.com');
+define('DB_USERNAME', 'drb4x76fQU');
+define('DB_PASSWORD', 'gKBEP1wVs5');
+define('DB_NAME', 'drb4x76fQU');
  
 /* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME,3306);
  
 // Check connection
 if($link === false){

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    ini_set('display_errors',1);
+//     ini_set('display_errors',1);
     require "config.php";
     if ($_SESSION['login'] != true) {
 		header('Location: login.php');
